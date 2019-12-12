@@ -93,5 +93,5 @@ The source code for the simulations is available
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
                                         
-DT::saveWidget(online_table, 'webpage_table.html',background = "#E7ECED",
+DT::saveWidget(online_table, 'index.html',background = "#E7ECED",
                title = "Simulation results")
