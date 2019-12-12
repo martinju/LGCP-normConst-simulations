@@ -16,12 +16,11 @@ library(data.table)
 library(foreach)
 library(doMC)
 
-source("Source_code/help_functions.R")
+source("source_code/help_functions.R")
 
 
 # # Settings providing quick results
-#no.z.samps <- 700
-these.k.z.samps <- 1:1000#1:2500#1:7000
+these.k.z.samps <- 1:10
 seed.z.sampling.initial <- 123467
 xy.range <- c(0,16)
 xy.range.approx.mesh <- c(-2,18)
@@ -29,50 +28,40 @@ npixel <- 20*16
 no.MC.intpoints <- npixel*diff(xy.range)/diff(xy.range.approx.mesh)*10 # OK as long as multiplyer of npixel
 parallelize.numCores <- 12
 
-boundary.splitter.vec <- c(1,2,4,8)
-INLA.max.edge.vec <-  c(4,3,2,1,0.5,0.25)#seq(4,0.25,by=-0.25)#c(4,2,1,0.5,0.25)#c(4,2)#c(0.25,0.5,1,2,4)
-true.field.variance.vec <- c(0.1,0.2,0.5,1)#0.5#c(0.25,0.5,1)#c(0.5,1)
+boundary.splitter.vec <- c(1,2)
+INLA.max.edge.vec <-  c(4,3)
+true.field.variance.vec <- c(0.1,0.2)
 beta0.true <- 1
-kappa.true.vec <- 1 # kappa = sqrt(8)/range
+kappa.true.vec <- sqrt(8)/c(1) # kappa = sqrt(8)/range
 FEM.approx.mesh <- TRUE
 INLA.offset <- c(-0.03,-0.1) 
 BarycentricManyPoints.nsub <- 29
-folder_string = NULL#"20191023_0945_iHcBtj" #"20191021_1602_5KUF25" #"20191018_1210_ZH8vu8"#"20191018_1057_HnU4zC" # Provide a folder string here to use pre-computed prep.mesh.list. Need to have exactly the same input.list provided below
+folder_string = NULL# Provide a folder string here to use pre-computed prep.mesh.list. Need to have exactly the same input.list provided below
 do_debug <- FALSE
 
-# # Big run!
-# no.z.samps <- 5000
+#UNCOMMENT THE BELOW FOR FULL RUN
+# # Settings producing the full simulaton run (several days of computation time), 
+# these.k.z.samps <- 1:10000
 # seed.z.sampling.initial <- 123467
 # xy.range <- c(0,16)
-# npixel <- 16*16
-# no.MC.intpoints <- npixel*8 # OK as long as multiplyer of npixel
-# parallelize.numCores <- 10
+# xy.range.approx.mesh <- c(-2,18)
+# npixel <- 20*16
+# no.MC.intpoints <- npixel*diff(xy.range)/diff(xy.range.approx.mesh)*10 # OK as long as multiplyer of npixel
+# parallelize.numCores <- 12
 # 
 # boundary.splitter.vec <- c(1,2,4,8)
-# INLA.max.edge.vec <- c(4,2,1,0.5,0.25)#c(0.25,0.5,1,2,4)
+# INLA.max.edge.vec <-  c(4,3,2,1,0.5,0.25)
 # true.field.variance.vec <- c(0.1,0.2,0.5,1)
-# beta0.true <- 0
-# kappa.true <- 2
+# beta0.true <- 1
+# kappa.true.vec <- sqrt(8)/c(8,6,4,3,2,1,1.5,0.75,0.5,0.25) # kappa = sqrt(8)/range
 # FEM.approx.mesh <- TRUE
-# INLA.offset <- -0.03 # This works
-# BarycentricManyPoints.nsub <- 100
+# INLA.offset <- c(-0.03,-0.1) 
+# BarycentricManyPoints.nsub <- 29
+# folder_string = NULL# Provide a folder string here to use pre-computed prep.mesh.list. Need to have exactly the same input.list provided below
+# do_debug <- FALSE
 
 
-input.list <- list(these.k.z.samps = these.k.z.samps,
-                   seed.z.sampling.initial = seed.z.sampling.initial,
-                   xy.range = xy.range,
-                   xy.range.approx.mesh = xy.range.approx.mesh,
-                   npixel = npixel,
-                   no.MC.intpoints = no.MC.intpoints,
-                   parallelize.numCores = parallelize.numCores,
-                   boundary.splitter.vec = boundary.splitter.vec,
-                   INLA.max.edge.vec = INLA.max.edge.vec,
-                   true.field.variance.vec = true.field.variance.vec,
-                   beta0.true = beta0.true,
-                   kappa.true.vec = kappa.true.vec,
-                   FEM.approx.mesh = FEM.approx.mesh,
-                   INLA.offset = INLA.offset,
-                   BarycentricManyPoints.nsub = BarycentricManyPoints.nsub)
+results_folder <- "results"
 
 #### Various preparations ####
 win <- owin(xy.range,xy.range)
@@ -242,7 +231,13 @@ dt <- data.table::data.table(cbind(INLA.max.edge=rep(INLA.max.edge.vec,times=len
                                    BarycentricPointSpread = c(BarycentricPointSpread.time.mat),
                                    BarycentricPointSpreadManyPoints = c(BarycentricPointSpreadManyPoints.time.mat)))
 
-fwrite(dt,"../Results_new/timing_results.csv")
+set.seed(round(proc.time()[3]*1000))
+rand_string <- stringi::stri_rand_strings(1,length=6)
+folder_string = paste0(format(Sys.time(), "%Y%m%d_%H%M"),"_",rand_string)
+
+dir.create(path = file.path(results_folder,"timing",folder_string),recursive = T)
+fwrite(dt,file.path(results_folder,"timing",folder_string,"timing_results.csv"))
+
 
 
 
