@@ -4,7 +4,7 @@ library(htmlwidgets)
 library(data.table)
 
 results_folder <- "results"
-folder_string <- "20191212_1434_76zMu8"
+folder_string <- "20191023_0945_iHcBtj"
 
 names_files = c("RMSE","bias","sd")
 
@@ -49,7 +49,7 @@ for (i in 1:length(names_files)){
 
 dat = rbindlist(DT_list)
 
-str(dat)
+#str(dat)
 dat[,(bycols):=lapply(.SD, as.factor),.SDcols=bycols]
 
 methods = colnames(dat)[!(colnames(dat) %in% bycols)]
@@ -58,7 +58,7 @@ dat[,(methods):=lapply(.SD, round,digits=9),.SDcols=methods]
 
 
 methods_names = c("MeshExact", "Voronoi", "DualMesh", "DualMeshExtra", "DualMeshExtra-MeshMapped",
-            "Barycentric-PointSpread", "Barycentric-PointSpread-ManyPoints","AvgApprox-Methods")
+                  "Barycentric-PointSpread", "Barycentric-PointSpread-ManyPoints","AvgApprox-Methods")
 
 bycols_names = c("field variance","field range", "#sub domains","#mesh nodes","beta0-true")
 
@@ -92,6 +92,6 @@ The source code for the simulations is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
-                                        
+
 DT::saveWidget(online_table, 'index.html',background = "#E7ECED",
                title = "Simulation results")
