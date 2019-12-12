@@ -1,34 +1,34 @@
+---
+  output: github_document
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-# <img src="logo.png" align="right" height="50px"/>
+#  <img src="logo.png" align="right" height="50px"/>
 
 # LGCP normalization constant approximation - simulation source code
 
-This repository contains the results and source code for the simulation
-experiments in the paper
+This repository contains the results and source code for the simulation experiments in the paper 
 
-*Investigating mesh based approximation methods for the normalization
-constant in the Cox process likelihood* by Martin Jullum.
+*Investigating mesh based approximation methods for the normalization constant in the Cox process likelihood* by 
+Martin Jullum.
 
-A link to the pre-print version of the paper will be made available here
-in due time.
+A link to the pre-print version of the paper will be made available here in due time.
 
-The sort and searchable table with the full results is available
+The sort and searchable table with the full results is available 
 [here](https://martinju.github.io/LGCP-normConst-simultations.html)
 
-Any questions about the paper, simulations or scripts can be raised by
-opening a Github issue, or sending an email to the author
-[jullum@nr.no](mailto:jullum@nr.no?subject=LGCP-normConst-simulations).
+Any questions about the paper, simulations or scripts can be raised by opening a Github issue, or sending an email to 
+the author [jullum@nr.no](<mailto:jullum@nr.no?subject=LGCP-normConst-simulations>).
 
 <!-- ### Source code files -->
 
 <!-- All source code for the simulations are available under /Source code -->
 
 <!-- File  | Description -->
-
 <!-- ------------- | ------------- -->
-
 <!--   simulation_script.R                         | This is the main script executing the simulation experiment in the paper. Settings for full simulation is commented out, such that the script can be ran quickly.  -->
-
 <!-- timing_deterministic_integration_methods.R  | Script for timing the deterministic integration methods. -->
-
 <!-- help_function.R | All functions used in the above scripts. Ufortunatly, almost no documentation is available.  -->
