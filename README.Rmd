@@ -18,7 +18,7 @@ Martin Jullum.
 A link to the pre-print version of the paper will be made available here in due time.
 
 The sort and searchable table with the full results is available 
-[here](https://martinju.github.io/LGCP-normConst-simultations.html)
+[here](https://martinju.github.io/LGCP-normConst-simulations/).
 
 Any questions about the paper, simulations or scripts can be raised by opening a Github issue, or sending an email to 
 the author [jullum@nr.no](<mailto:jullum@nr.no?subject=LGCP-normConst-simulations>).
