@@ -468,6 +468,11 @@ res.dt <- data.table::rbindlist(unlist(unlist(unlist(res.dt.list,recursive = F),
 methods <- c("MeshExact","Voronoi","DualMesh","DualMeshExtra","DualMeshExtraMeshMapped","BarycentricPointSpread","BarycentricPointSpreadManyPoints")
 bycols <- c("INLA.max.edge","sigma2x.true","boundary.splitter","beta0.true","kappa.true","folder_string","FEM.approx.mesh","OmegaArea")
 
+# Adding an average of the deterministic integration methods working solely on the mesh
+detint_methods <- c("Voronoi","DualMesh","DualMeshExtraMeshMapped","BarycentricPointSpread","BarycentricPointSpreadManyPoints")
+res.dt[,AvgDetMethods:=rowMeans(.SD),.SDcols=detint_methods]
+methods <- c(methods,"AvgDetMethods")
+
 res.dt <- res.dt[,lapply(.SD, function(x) x/OmegaArea),.SDcols=c(methods,"OracleTruth"),by=c(bycols,"seed")] # Standardizes the estimates to be for every square unit to easier compare the performance for different boundary.splitters
 
 fwrite(res.dt,file.path(results_folder,"full",folder_string,"full.res.dt.csv"),append=T)
@@ -490,6 +495,5 @@ fwrite(x = summary.sqbias.res.dt,file.path(results_folder,"summary",folder_strin
 fwrite(x = summary.variance.res.dt,file.path(results_folder,"summary",folder_string,"summary.variance.res.dt.csv"))
 fwrite(x = summary.sd.res.dt,file.path(results_folder,"summary",folder_string,"summary.sd.res.dt.csv"))
 fwrite(x = summary.bias.res.dt,file.path(results_folder,"summary",folder_string,"summary.bias.res.dt.csv"))
-
 
 
