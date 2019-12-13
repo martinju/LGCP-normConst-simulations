@@ -58,7 +58,7 @@ dat[,(methods):=lapply(.SD, round,digits=9),.SDcols=methods]
 
 
 methods_names = c("MeshExact", "Voronoi", "DualMesh", "DualMeshExtra", "DualMeshExtra-MeshMapped",
-                  "Barycentric-PointSpread", "Barycentric-PointSpread-ManyPoints","AvgApprox-Methods")
+                  "Barycentric-PointSpread", "Barycentric-PointSpread-ManyPoints","AverageDetMesh")
 
 bycols_names = c("field variance","field range", "#sub domains","#mesh nodes","beta0-true")
 
