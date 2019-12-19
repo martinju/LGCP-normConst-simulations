@@ -65,7 +65,7 @@ for (j in 1:no_grp){
     met2 <- method_comb_dt$method2[i]
     comb <- method_comb_dt$comb[i]
     
-    vec <- unlist(DT_squared_error[grp==1,..met1] -   DT_squared_error[grp==1,..met2],use.names = F)
+    vec <- unlist(DT_squared_error[grp==j,..met1] -   DT_squared_error[grp==j,..met2],use.names = F)
     obs_val <- mean(vec)
     permut_val <- as.vector(vec %*% signmat)/no_permut
     p_val <- mean(abs(permut_val) > abs(obs_val))
