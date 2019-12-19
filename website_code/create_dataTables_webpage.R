@@ -95,3 +95,38 @@ online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html
 
 DT::saveWidget(online_table, 'index.html',background = "#E7ECED",
                title = "Simulation results")
+
+
+##### Web page for the permutations tests
+
+
+dat <- fread(file.path(results_folder,"permutation_test",folder_string,"permutation.test.results.csv"))
+
+bycols2 <- c("field_variance","field_range","subDomains","meshNodes","beta0.true")
+factorcols <- c(bycols2,"method1","method2")
+
+
+dat[,(factorcols):=lapply(.SD, as.factor),.SDcols=factorcols]
+
+htmltable = datatable(dat, filter = 'top',options = list(
+  pageLength = 100, autoWidth = TRUE), rownames = FALSE) %>% 
+  formatStyle(c("method1","method2"),  color = 'white', backgroundColor = '#b399fd', fontWeight = 'bold') %>%
+  formatStyle(bycols2,  color = 'white', backgroundColor = '#ec8ef5', fontWeight = 'bold') %>%
+  formatStyle("p_value",  color = 'black', backgroundColor = '#c4f68d', fontWeight = 'bold')
+
+# Adding title as well
+header_html = "<h2>LGCP simulation results</h2>
+  <p>Permutation test for difference between every combination of approximation relevant for the paper
+Investigating mesh based approximation methods for the normalization constant in the Cox process likelihood by Martin Jullum. 
+The source code for the simulations and permutation tests is available
+<a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
+
+online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
+
+DT::saveWidget(online_table, 'permutation_tests.html',background = "#E7ECED",
+               title = "Permutation test results")
+
+
+
+
+
