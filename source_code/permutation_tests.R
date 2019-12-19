@@ -77,12 +77,12 @@ for (j in 1:no_grp){
 
 res_DT[,comb:=NULL]
 res_DT[,grp:=NULL]
-
-res_DT2 <- copy(res_DT)
-res_DT2[,method1temp:=method1]
-res_DT2[,method1:=method2]
-res_DT2[,method2:=method1temp]
-res_DT2[,method1temp:=NULL]
+# 
+# res_DT2 <- copy(res_DT)
+# res_DT2[,method1temp:=method1]
+# res_DT2[,method1:=method2]
+# res_DT2[,method2:=method1temp]
+# res_DT2[,method1temp:=NULL]
 
 res_DT <- rbind(res_DT,res_DT2)
 

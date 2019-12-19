@@ -20159,6 +20159,7 @@ beta0.true,field_variance,field_range,subDomains,meshNodes,method1,method2,p_val
 0,1,0.75,32,126,BarycentricPointSpread,BarycentricPointSpreadManyPoints,1,0.07
 0,1,0.5,32,126,BarycentricPointSpread,BarycentricPointSpreadManyPoints,1,0.02
 0,1,0.25,32,126,BarycentricPointSpread,BarycentricPointSpreadManyPoints,1,0
+<<<<<<< HEAD
 0,0.1,8,1,16429,Voronoi,MeshExact,1,0.02
 0,0.1,6,1,16429,Voronoi,MeshExact,1,0
 0,0.1,4,1,16429,Voronoi,MeshExact,1,0
@@ -40319,3 +40320,5 @@ beta0.true,field_variance,field_range,subDomains,meshNodes,method1,method2,p_val
 0,1,0.75,32,126,BarycentricPointSpreadManyPoints,BarycentricPointSpread,1,0.07
 0,1,0.5,32,126,BarycentricPointSpreadManyPoints,BarycentricPointSpread,1,0.02
 0,1,0.25,32,126,BarycentricPointSpreadManyPoints,BarycentricPointSpread,1,0
+=======
+>>>>>>> master
