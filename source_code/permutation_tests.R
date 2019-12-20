@@ -56,7 +56,7 @@ method_comb_dt[,comb:=.I]
 bycols2 <- c(bycols,"grp")
 res_DT <- unique(DT_squared_error[,..bycols2])
 res_DT <- data.table(merge.data.frame(res_DT,method_comb_dt,all = T))
-res_DT[,p_val:=1]
+res_DT[,p_value:=1]
 
 # Just brute-forcing this ()
 for (j in 1:no_grp){
@@ -67,7 +67,7 @@ for (j in 1:no_grp){
     
     vec <- unlist(DT_squared_error[grp==j,..met1] -   DT_squared_error[grp==j,..met2],use.names = F)
     obs_val <- mean(vec)
-    permut_val <- as.vector(vec %*% signmat)/no_permut
+    permut_val <- as.vector(vec %*% signmat)/no_samp
     p_val <- mean(abs(permut_val) > abs(obs_val))
     #DT_squared_error[,by=grp]
     res_DT[comb == i & grp == j,p_value:=..p_val]
@@ -83,12 +83,17 @@ res_DT[,grp:=NULL]
 # res_DT2[,method1:=method2]
 # res_DT2[,method2:=method1temp]
 # res_DT2[,method1temp:=NULL]
+# res_DT <- rbind(res_DT,res_DT2)
 
-res_DT <- rbind(res_DT,res_DT2)
+# Total proportion of tests with significant p-values
+mean(res_DT$p_value<0.01)
+#[1] 0.9644345
 
+# Proportion of tests with the five models being significantly different
+mean(res_DT[(!(method1 %in% c("MeshExact","DualMeshExtra"))) & (!(method2 %in% c("MeshExact","DualMeshExtra"))),p_value]<0.01)
+#[1] 0.9472917
 
-mean(res_DT$p_value<0.05)
 #dir.create(file.path(results_folder,"permutation_test",folder_string),recursive = T)
 
-fwrite(x = res_DT,file.path(results_folder,"permutation_test",folder_string,"permutation.test.results.csv"))
+fwrite(x = res_DT,file.path(results_folder,"permutation_test",folder_string,paste0("permutation.test.results_",no_permut,".csv")))
 
