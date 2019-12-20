@@ -92,8 +92,9 @@ The source code for the simulations is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
+dir.create("sim_res")
 
-DT::saveWidget(online_table, 'index.html',background = "#E7ECED",
+DT::saveWidget(online_table, file.path("sim_res","index.html"),background = "#E7ECED",
                title = "Simulation results")
 
 
@@ -123,11 +124,12 @@ The source code for the simulations and permutation tests is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
+dir.create("permut_tests")
 
-DT::saveWidget(online_table, 'permutation-tests.html',background = "#E7ECED",
+DT::saveWidget(online_table, file.path("permut_tests","index.html"),background = "#E7ECED",
                title = "Permutation test results")
 
-
+    
 
 
 
