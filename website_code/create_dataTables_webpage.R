@@ -93,7 +93,7 @@ The source code for the simulations is available
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
 
-DT::saveWidget(online_table, 'index.html',background = "#E7ECED",
+DT::saveWidget(online_table, "sim_res.html",background = "#E7ECED",
                title = "Simulation results")
 
 
@@ -116,18 +116,19 @@ htmltable = datatable(dat, filter = 'top',options = list(
 
 # Adding title as well
 header_html = "<h2>LGCP simulation results</h2>
-  <p>Permutation test for difference between every combination of parameters and approximation methods relevant for the paper
+  <p>Permutation test for difference between the RMSE of any pair of approximation methods relevant for the paper
 Investigating mesh based approximation methods for the normalization constant in the Cox process likelihood by Martin Jullum. 
-Every single permutation test is based on 10 000 random permutations.
+Every single permutation test is carried out independently for every combination of parameters, using 
+10 000 random permutations.
 The source code for the simulations and permutation tests is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
 
-DT::saveWidget(online_table, 'permutation-tests.html',background = "#E7ECED",
+DT::saveWidget(online_table, "permut_tests.html",background = "#E7ECED",
                title = "Permutation test results")
 
-
+    
 
 
 

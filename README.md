@@ -12,8 +12,18 @@ constant in the Cox process likelihood* by Martin Jullum.
 A link to the pre-print version of the paper will be made available here
 in due time.
 
-The sort and searchable table with the full results is available
-[here](https://martinju.github.io/LGCP-normConst-simulations/).
+#### Full result table
+
+A sort and searchable table with the full simulation results is
+available
+[here](https://martinju.github.io/LGCP-normConst-simulations/sim_res.html).
+
+#### Permutation tests
+
+A sort and searchable table with results for permutation tests of
+pairwise differences between all combinations of the approximation
+methods, for each parameter combination is available
+[here](https://martinju.github.io/LGCP-normConst-simulations/permut_tests.html).
 
 Any questions about the paper, simulations or scripts can be raised by
 opening a Github issue, or sending an email to the author
