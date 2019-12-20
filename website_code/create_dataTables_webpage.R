@@ -100,7 +100,7 @@ DT::saveWidget(online_table, 'index.html',background = "#E7ECED",
 ##### Web page for the permutations tests
 
 
-dat <- fread(file.path(results_folder,"permutation_test",folder_string,"permutation.test.results.csv"))
+dat <- fread(file.path(results_folder,"permutation_test",folder_string,"permutation.test.results_10000.csv"))
 
 bycols2 <- c("field_variance","field_range","subDomains","meshNodes","beta0.true")
 factorcols <- c(bycols2,"method1","method2")
@@ -116,14 +116,15 @@ htmltable = datatable(dat, filter = 'top',options = list(
 
 # Adding title as well
 header_html = "<h2>LGCP simulation results</h2>
-  <p>Permutation test for difference between every combination of approximation relevant for the paper
+  <p>Permutation test for difference between every combination of parameters and approximation methods relevant for the paper
 Investigating mesh based approximation methods for the normalization constant in the Cox process likelihood by Martin Jullum. 
+Every single permutation test is based on 10 000 random permutations.
 The source code for the simulations and permutation tests is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
 online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
 
-DT::saveWidget(online_table, 'permutation_tests.html',background = "#E7ECED",
+DT::saveWidget(online_table, 'permutation-tests.html',background = "#E7ECED",
                title = "Permutation test results")
 
 
