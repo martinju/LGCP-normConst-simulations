@@ -91,9 +91,9 @@ Investigating mesh based approximation methods for the normalization constant in
 The source code for the simulations is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
-online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
+online_table1 = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
 
-DT::saveWidget(online_table, "sim_res.html",background = "#E7ECED",
+DT::saveWidget(online_table1, "sim_res.html",background = "#E7ECED",
                title = "Simulation results")
 
 
@@ -123,9 +123,9 @@ Every single permutation test is carried out independently for every combination
 The source code for the simulations and permutation tests is available
 <a href='https://github.com/martinju/LGCP-normConst-simulations'>here</a>.</p>"
 
-online_table = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
+online_table2 = htmlwidgets::prependContent(htmltable,htmltools::HTML(header_html))
 
-DT::saveWidget(online_table, "permut_tests.html",background = "#E7ECED",
+DT::saveWidget(online_table2, "permut_tests.html",background = "#E7ECED",
                title = "Permutation test results")
 
     
