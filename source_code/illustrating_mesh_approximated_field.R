@@ -165,8 +165,9 @@ min((MSE_minus_vec-MinMSE))
 
 
 
-
+########################################################################################################
 #### 1D version using a section to approximate a section of the 2D field above, using the same code ####
+########################################################################################################
 
 OmegaMesh_1D <- inla.mesh.1d(loc=seq(xy.range.approx.mesh[1],xy.range.approx.mesh[2],by=INLA.max.edge))
 rf.xy.grid_1D <- xyvals
