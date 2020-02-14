@@ -252,13 +252,13 @@ if(is.null(folder_string)){
   dir.create(path = file.path(results_folder,"summary",folder_string),recursive = T)
   
   
-  save(input.list,file = file.path(results_folder,folder_string,"input.list_run.RData"))
-  save(prep.mesh.list,file = file.path(results_folder,folder_string,"prep.mesh.list_run.RData"))
+  save(input.list,file = file.path(results_folder,"temp",folder_string,"input.list_run.RData"))
+  save(prep.mesh.list,file = file.path(results_folder,"temp",folder_string,"prep.mesh.list_run.RData"))
 } else { # I.e. if folder_string is provided
   input.list0 <- input.list
   
-  load(file = file.path(results_folder,folder_string,"input.list_run.RData"))
-  load(file = file.path(results_folder,folder_string,"prep.mesh.list_run.RData"))
+  load(file = file.path(results_folder,"temp",folder_string,"input.list_run.RData"))
+  load(file = file.path(results_folder,"temp",folder_string,"prep.mesh.list_run.RData"))
   
   
   # Don't care about differences in these.k.z.samps
