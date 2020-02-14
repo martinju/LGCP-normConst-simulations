@@ -1,6 +1,22 @@
-#### Estimating the integral of the exponential latent field
+#### DESCRIPTION ####
+# This is a script for approximating a given (sampled) field using the least squares method for functions.
+# This is essentially the finite element method (FEM) for a given field. 
+# The theory behind the method is described here
+# http://folk.uio.no/kent-and/hpl-fem-book/doc/pub/book/html/._fem-book005.html
 
-rm(list=ls())
+# The script is a self-contained extraction from the code related to the paper
+# Investigating mesh based approximation methods for the normalization constant in the Cox process likelihood 
+# by Martin Jullum. The full code of that paper is available here: 
+# https://github.com/martinju/LGCP-normConst-simulations
+
+# The script contains both a 2D and a 1D illustration, uses Monte Carlo integration to solve the integrals involved.
+# The script will always be available here:
+# https://github.com/martinju/LGCP-normConst-simulations/blob/master/source_code/illustrating_mesh_approximated_field.R
+# Any questions could be raised to the author Martin Jullum (jullum@nr.no)
+
+#################
+
+#rm(list=ls())
 
 library(Matrix)
 library(INLA)
