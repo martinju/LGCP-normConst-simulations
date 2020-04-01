@@ -6,11 +6,13 @@
 This repository contains the results and source code for the simulation
 experiments in the paper
 
-*Investigating mesh based approximation methods for the normalization
-constant in the Cox process likelihood* by Martin Jullum.
+Jullum, M. (2020) *Investigating mesh based approximation methods for
+the normalization constant in the Cox process likelihood*, Stat, in
+press, [doi.org/10.1002/sta4.285](https://doi.org/10.1002/sta4.285)
 
-A link to the pre-print version of the paper will be made available here
-in due time.
+The preprint of the paper is available [here](paper_preprint.pdf), and
+the supporting information (preprint)
+[here](paper_supporting_information_preprint.pdf)
 
 #### Main files
 
